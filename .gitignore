@@ -1,0 +1,33 @@
+# ======================
+# Node / Frontend
+# ======================
+node_modules/
+FE/node_modules/
+FE/dist/
+FE/build/
+
+# Environment files
+.env
+FE/.env
+
+# ======================
+# .NET Backend
+# ======================
+BE/bin/
+BE/obj/
+
+# ======================
+# Logs
+# ======================
+*.log
+
+# ======================
+# OS files
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# VS Code
+# ======================
+.vscode/
