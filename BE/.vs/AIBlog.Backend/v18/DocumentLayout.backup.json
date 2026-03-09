@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "D:\\XHIRE\\AI Blog\\BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6D0959FE-689D-A80D-2817-4C5769F1EED6}|AIBlog.Backend.csproj|d:\\xhire\\ai blog\\be\\models\\topic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D0959FE-689D-A80D-2817-4C5769F1EED6}|AIBlog.Backend.csproj|solutionrelative:models\\topic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6D0959FE-689D-A80D-2817-4C5769F1EED6}|AIBlog.Backend.csproj|d:\\xhire\\ai blog\\be\\services\\bloggenerationjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D0959FE-689D-A80D-2817-4C5769F1EED6}|AIBlog.Backend.csproj|solutionrelative:services\\bloggenerationjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D0959FE-689D-A80D-2817-4C5769F1EED6}|AIBlog.Backend.csproj|d:\\xhire\\ai blog\\be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D0959FE-689D-A80D-2817-4C5769F1EED6}|AIBlog.Backend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D0959FE-689D-A80D-2817-4C5769F1EED6}|AIBlog.Backend.csproj|d:\\xhire\\ai blog\\be\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6D0959FE-689D-A80D-2817-4C5769F1EED6}|AIBlog.Backend.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6D0959FE-689D-A80D-2817-4C5769F1EED6}|AIBlog.Backend.csproj|d:\\xhire\\ai blog\\be\\controllers\\topicscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6D0959FE-689D-A80D-2817-4C5769F1EED6}|AIBlog.Backend.csproj|solutionrelative:controllers\\topicscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D0959FE-689D-A80D-2817-4C5769F1EED6}|AIBlog.Backend.csproj|d:\\xhire\\ai blog\\be\\models\\topic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D0959FE-689D-A80D-2817-4C5769F1EED6}|AIBlog.Backend.csproj|solutionrelative:models\\topic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,30 +30,69 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\XHIRE\\AI Blog\\BE\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\XHIRE\\AI Blog\\BE\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABsAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-07T06:16:23.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "BlogGenerationJob.cs",
+              "DocumentMoniker": "D:\\XHIRE\\AI Blog\\BE\\Services\\BlogGenerationJob.cs",
+              "RelativeDocumentMoniker": "Services\\BlogGenerationJob.cs",
+              "ToolTip": "D:\\XHIRE\\AI Blog\\BE\\Services\\BlogGenerationJob.cs",
+              "RelativeToolTip": "Services\\BlogGenerationJob.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAWwHMAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T05:35:31.354Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\XHIRE\\AI Blog\\BE\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\XHIRE\\AI Blog\\BE\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAwwGsAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T05:23:12.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Topic.cs",
               "DocumentMoniker": "D:\\XHIRE\\AI Blog\\BE\\Models\\Topic.cs",
               "RelativeDocumentMoniker": "Models\\Topic.cs",
               "ToolTip": "D:\\XHIRE\\AI Blog\\BE\\Models\\Topic.cs",
               "RelativeToolTip": "Models\\Topic.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAiwA8AAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwA0AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-14T05:55:38.719Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "TopicsController.cs",
               "DocumentMoniker": "D:\\XHIRE\\AI Blog\\BE\\Controllers\\TopicsController.cs",
               "RelativeDocumentMoniker": "Controllers\\TopicsController.cs",
               "ToolTip": "D:\\XHIRE\\AI Blog\\BE\\Controllers\\TopicsController.cs",
               "RelativeToolTip": "Controllers\\TopicsController.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAQwBkAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAYwCEAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-14T05:16:18.293Z",
               "EditorCaption": ""

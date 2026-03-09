@@ -1,16 +1,22 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useState, useEffect } from "react";
 import {
   format,
   startOfMonth,
   endOfMonth,
   eachDayOfInterval,
-  isSameMonth,
   isSameDay,
   addMonths,
   subMonths,
   getDay,
 } from "date-fns";
-import { MdChevronLeft, MdChevronRight, MdAdd } from "react-icons/md";
+import {
+  MdChevronLeft,
+  MdChevronRight,
+  MdAdd,
+  MdEvent,
+  MdClose,
+} from "react-icons/md";
 import api from "../../utils/api";
 
 const CalendarView = () => {
@@ -21,18 +27,19 @@ const CalendarView = () => {
   const [newTopicTitle, setNewTopicTitle] = useState("");
   const [editingTopic, setEditingTopic] = useState(null);
 
-  useEffect(() => {
-    fetchTopics();
-  }, []);
-
   const fetchTopics = async () => {
     try {
       const res = await api.get("/api/topics");
+
       setTopics(res.data);
     } catch (err) {
       console.error("Failed to fetch topics", err);
     }
   };
+
+  useEffect(() => {
+    fetchTopics();
+  }, []);
 
   const handlePrevMonth = () => setCurrentDate(subMonths(currentDate, 1));
   const handleNextMonth = () => setCurrentDate(addMonths(currentDate, 1));

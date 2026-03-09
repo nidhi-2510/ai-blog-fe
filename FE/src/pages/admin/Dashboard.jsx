@@ -18,22 +18,15 @@ const StatCard = ({ title, value, icon, color }) => (
 );
 
 const Dashboard = () => {
-  const [stats, setStats] = useState({
-    totalPosts: 0,
-    pending: 0,
-    published: 0,
-    failed: 0,
+  const [stats] = useState({
+    totalPosts: 120,
+    pending: 5,
+    published: 112,
+    failed: 3,
   });
 
   useEffect(() => {
-    // Mock fetch stats
-    // In real implementation, create an endpoint /api/dashboard/stats
-    setStats({
-      totalPosts: 120,
-      pending: 5,
-      published: 112,
-      failed: 3,
-    });
+    // In real implementation, create an endpoint /api/dashboard/stats and fetch here
   }, []);
 
   return (

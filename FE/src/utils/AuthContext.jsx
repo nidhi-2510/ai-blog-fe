@@ -5,22 +5,19 @@ import { useNavigate } from "react-router-dom";
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const stored = localStorage.getItem("user");
+    return stored ? JSON.parse(stored) : null;
+  });
   const [token, setToken] = useState(localStorage.getItem("token"));
   const navigate = useNavigate();
 
   useEffect(() => {
     if (token) {
-      // Optional: Validate token or fetch user profile
-      const storedUser = localStorage.getItem("user");
-      if (storedUser) {
-        setUser(JSON.parse(storedUser));
-      }
       // Set axios default header
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     } else {
       delete api.defaults.headers.common["Authorization"];
-      setUser(null);
     }
   }, [token]);
 
@@ -67,4 +64,5 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => useContext(AuthContext);

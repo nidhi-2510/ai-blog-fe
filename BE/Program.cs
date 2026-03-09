@@ -6,6 +6,7 @@ using Hangfire.PostgreSql;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using AIBlog.Backend.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,6 +56,7 @@ builder.Services.AddHangfire(configuration => configuration
     .UsePostgreSqlStorage(options => options.UseNpgsqlConnection(builder.Configuration.GetConnectionString("Hangfire"))));
 
 builder.Services.AddHangfireServer();
+builder.Services.AddScoped<BlogGenerationJob>();
 
 // Add JWT Bearer Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -98,6 +100,13 @@ app.UseAuthentication(); // Must be before Authorization
 app.UseAuthorization();
 
 app.UseHangfireDashboard();
+
+// Schedule daily blog generation at 11:30 AM
+RecurringJob.AddOrUpdate<BlogGenerationJob>(
+    "daily-blog-generation", 
+    job => job.GenerateDailyBlogsAsync(), 
+    "04 12 * * *", 
+    TimeZoneInfo.Local);
 
 app.MapControllers();
 

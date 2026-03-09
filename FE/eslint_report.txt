@@ -1,0 +1,77 @@
+[0m[0m
+[0m[4mD:\XHIRE\AI Blog\FE\src\pages\admin\CalendarView.jsx[24m[0m
+[0m   [2m7:3[22m  [31merror[39m  'isSameMonth' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 [2mno-unused-vars[22m[0m
+[0m  [2m25:5[22m  [31merror[39m  Error: Cannot access variable before it is declared[0m
+[0m[0m
+[0m`fetchTopics` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.[0m
+[0m[0m
+[0m  23 |[0m
+[0m  24 |   useEffect(() => {[0m
+[0m> 25 |     fetchTopics();[0m
+[0m     |     ^^^^^^^^^^^ `fetchTopics` accessed before it is declared[0m
+[0m  26 |   }, []);[0m
+[0m  27 |[0m
+[0m  28 |   const fetchTopics = async () => {[0m
+[0m[0m
+[0m  26 |   }, []);[0m
+[0m  27 |[0m
+[0m> 28 |   const fetchTopics = async () => {[0m
+[0m     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m> 29 |     try {[0m
+[0m     | ^^^^^^^^^[0m
+[0m> 30 |       const res = await api.get("/api/topics");[0m
+[0m     | ^^^^^^^^^[0m
+[0m> 31 |       setTopics(res.data);[0m
+[0m     | ^^^^^^^^^[0m
+[0m> 32 |     } catch (err) {[0m
+[0m     | ^^^^^^^^^[0m
+[0m> 33 |       console.error("Failed to fetch topics", err);[0m
+[0m     | ^^^^^^^^^[0m
+[0m> 34 |     }[0m
+[0m     | ^^^^^^^^^[0m
+[0m> 35 |   };[0m
+[0m     | ^^^^^ `fetchTopics` is declared here[0m
+[0m  36 |[0m
+[0m  37 |   const handlePrevMonth = () => setCurrentDate(subMonths(currentDate, 1));[0m
+[0m  38 |   const handleNextMonth = () => setCurrentDate(addMonths(currentDate, 1));  [2mreact-hooks/immutability[22m[0m
+[0m[0m
+[0m[4mD:\XHIRE\AI Blog\FE\src\pages\admin\Dashboard.jsx[24m[0m
+[0m  [2m31:5[22m  [31merror[39m  Error: Calling setState synchronously within an effect can trigger cascading renders[0m
+[0m[0m
+[0mEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:[0m
+[0m* Update external systems with the latest state from React.[0m
+[0m* Subscribe for updates from some external system, calling setState in a callback function when external state changes.[0m
+[0m[0m
+[0mCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).[0m
+[0m[0m
+[0m  29 |     // Mock fetch stats[0m
+[0m  30 |     // In real implementation, create an endpoint /api/dashboard/stats[0m
+[0m> 31 |     setStats({[0m
+[0m     |     ^^^^^^^^ Avoid calling setState() directly within an effect[0m
+[0m  32 |       totalPosts: 120,[0m
+[0m  33 |       pending: 5,[0m
+[0m  34 |       published: 112,  [2mreact-hooks/set-state-in-effect[22m[0m
+[0m[0m
+[0m[4mD:\XHIRE\AI Blog\FE\src\pages\public\BlogDetail.jsx[24m[0m
+[0m  [2m83:38[22m  [31merror[39m  'idx' is defined but never used  [2mno-unused-vars[22m[0m
+[0m[0m
+[0m[4mD:\XHIRE\AI Blog\FE\src\utils\AuthContext.jsx[24m[0m
+[0m  [2m17:9[22m   [31merror[39m  Error: Calling setState synchronously within an effect can trigger cascading renders[0m
+[0m[0m
+[0mEffects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:[0m
+[0m* Update external systems with the latest state from React.[0m
+[0m* Subscribe for updates from some external system, calling setState in a callback function when external state changes.[0m
+[0m[0m
+[0mCalling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).[0m
+[0m[0m
+[0m  15 |       const storedUser = localStorage.getItem("user");[0m
+[0m  16 |       if (storedUser) {[0m
+[0m> 17 |         setUser(JSON.parse(storedUser));[0m
+[0m     |         ^^^^^^^ Avoid calling setState() directly within an effect[0m
+[0m  18 |       }[0m
+[0m  19 |       // Set axios default header[0m
+[0m  20 |       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;  [2mreact-hooks/set-state-in-effect[22m[0m
+[0m  [2m70:14[22m  [31merror[39m  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    [2mreact-refresh/only-export-components[22m[0m
+[0m[0m
+[0m[31m[1m✖ 6 problems (6 errors, 0 warnings)[22m[39m[0m
+[0m[31m[1m[22m[39m[0m

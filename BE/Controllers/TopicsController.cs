@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using AIBlog.Backend.Services;
 
 namespace AIBlog.Backend.Controllers
 {
@@ -59,6 +60,15 @@ namespace AIBlog.Backend.Controllers
             _context.Topics.Remove(topic);
             await _context.SaveChangesAsync();
             return NoContent();
+        }
+
+        [HttpPost("trigger-generation")]
+        public async Task<IActionResult> TriggerBlogGeneration([FromServices] BlogGenerationJob blogGenerationJob)
+        {
+            // Note: This will generate blogs for any Pending topics scheduled for today.
+            // Ensure you have at least one topic scheduled for today's date before testing.
+            await blogGenerationJob.GenerateDailyBlogsAsync();
+            return Ok(new { message = "Blog generation process completed. Check the console logs for details." });
         }
     }
 }

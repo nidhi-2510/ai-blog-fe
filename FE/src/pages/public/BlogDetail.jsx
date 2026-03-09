@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom";
 import api from "../../utils/api";
 import { format } from "date-fns";
 import { MdThumbUp, MdComment, MdShare, MdArrowBack } from "react-icons/md";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const BlogDetail = () => {
   const { id } = useParams();
@@ -43,57 +45,102 @@ const BlogDetail = () => {
     setComment({ authorName: "", authorEmail: "", content: "" });
   };
 
-  if (loading) return <div className="p-8 text-center">Loading...</div>;
+  if (loading)
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600"></div>
+      </div>
+    );
   if (!blog)
-    return <div className="p-8 text-center text-red-500">Blog not found</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-red-500 font-bold text-2xl bg-white p-8 rounded-2xl shadow-sm border border-red-100">
+          Blog not found
+        </div>
+      </div>
+    );
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
-      <header className="bg-white shadow sticky top-0 z-10">
+    <div className="min-h-screen font-sans bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-50 via-white to-white pb-20">
+      <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-gray-100">
         <div className="container mx-auto px-4 py-4 flex items-center gap-4">
-          <Link to="/" className="text-gray-600 hover:text-blue-600">
+          <Link
+            to="/"
+            className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 transition-colors rounded-full"
+          >
             <MdArrowBack size={24} />
           </Link>
-          <h1 className="text-xl font-bold text-gray-800 truncate">
+          <h1 className="text-lg font-bold text-gray-800 truncate border-l pl-4 border-gray-200">
             {blog.title}
           </h1>
         </div>
       </header>
 
-      <article className="container mx-auto px-4 py-8 max-w-4xl">
-        <div className="mb-8">
+      <article className="container mx-auto px-4 py-12 max-w-4xl">
+        <div className="mb-12">
           {blog.images && blog.images.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              {blog.images.map((img, idx) => (
-                <img
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+              {blog.images.map((img) => (
+                <div
                   key={img.id}
-                  src={img.imageUrl}
-                  alt={`Generated for ${blog.title}`}
-                  className={`w-full rounded-lg shadow-lg object-cover ${blog.images.length === 1 ? "md:col-span-2 h-96" : "h-64"}`}
-                />
+                  className={`overflow-hidden rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-gray-100 relative group ${blog.images.length === 1 ? "md:col-span-2 h-[500px]" : "h-72"}`}
+                >
+                  <img
+                    src={img.imageUrl}
+                    alt={`Generated for ${blog.title}`}
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>
               ))}
             </div>
           ) : null}
 
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
-            {blog.title}
-          </h1>
-          <div className="flex items-center text-gray-500 text-sm mb-8 border-b pb-4">
-            <span>
-              {format(
-                new Date(blog.publishedAt || blog.createdAt),
-                "MMMM d, yyyy",
-              )}
-            </span>
-            <span className="mx-2">&bull;</span>
-            <span>{blog.topic?.title}</span>
-          </div>
+          <div className="max-w-3xl mx-auto">
+            <div className="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-bold text-xs uppercase tracking-widest mb-6 border border-blue-100">
+              {blog.topic?.title || "AI Insight"}
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-700 mb-6 leading-[1.15]">
+              {blog.title}
+            </h1>
+            <div className="flex items-center text-gray-500 text-sm mb-12 py-6 border-y border-gray-100">
+              <span className="flex items-center gap-1.5 font-medium">
+                <svg
+                  className="w-4 h-4 text-blue-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+                {format(
+                  new Date(blog.publishedAt || blog.createdAt),
+                  "MMMM d, yyyy",
+                )}
+              </span>
+              <span className="mx-4 text-gray-300">|</span>
+              <span className="flex items-center gap-1.5 font-medium bg-gray-100 px-2 py-1 rounded-md">
+                Status:{" "}
+                {blog.status === 1 || blog.status === "Published" ? (
+                  <span className="text-green-600">Published</span>
+                ) : blog.status === 2 || blog.status === "Rejected" ? (
+                  <span className="text-red-500">Rejected</span>
+                ) : (
+                  <span className="text-yellow-600">Draft</span>
+                )}
+              </span>
+            </div>
 
-          <div
-            className="prose prose-lg prose-blue max-w-none text-gray-800 leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: blog.content }}
-          >
-            {/* Content rendered safely typically, assuming backend sanitizer */}
+            <div className="prose prose-lg md:prose-xl prose-blue max-w-none text-gray-700 prose-headings:text-gray-900 prose-headings:font-bold prose-img:rounded-2xl prose-img:shadow-lg prose-a:text-blue-600 hover:prose-a:text-blue-500 selection:bg-blue-100 selection:text-blue-900">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {blog.content}
+              </ReactMarkdown>
+            </div>
           </div>
         </div>
 
